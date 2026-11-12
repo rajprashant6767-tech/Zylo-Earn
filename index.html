@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admolo Ads Tester</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script class="admoloScript" src="https://cdn.admolo.com/assets/ads/ad.js"></script>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px;
+ background:#101827;color:white;
+ font-family:Arial,sans-serif;
+}
+.container{max-width:480px;margin:auto}
+h1{text-align:center;color:#60a5fa}
+.subtitle{text-align:center;color:#9ca3af}
+.card{
+ background:#1e293b;padding:18px;
+ border-radius:14px;margin:18px 0;
+ border:1px solid #334155;
+}
+h3{margin-top:0}
+.ad{
+ background:#0f172a;
+ border:1px dashed #64748b;
+ border-radius:10px;
+ padding:12px;
+ margin-top:12px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ min-height:100px;
+ overflow:hidden;
+}
+.status{color:#38bdf8;font-size:13px}
+button{
+ width:100%;padding:13px;
+ border:0;border-radius:9px;
+ background:#2563eb;color:white;
+ font-size:15px;font-weight:bold;
+ margin-top:12px;
+}
+.info{text-align:center;color:#94a3b8;font-size:12px}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Admolo Ads Tester</h1>
+<p class="subtitle">Telegram Mini App Advertisement Testing</p>
+
+<div class="card">
+<h3>Telegram Status</h3>
+<p id="telegramStatus" class="status">Checking...</p>
+<p id="userName">User: Guest</p>
+</div>
+
+<div class="card">
+<h3>1. Interstitial Ad</h3>
+<p class="status">Full Screen Advertisement</p>
+
+<div class="ad">
+<div class="admoloInterstitial"
+data-publisher="eyJpdiI6ImF1c3J2NzJhVDFmKzN3cjZSYktIZGc9PSIsInZhbHVlIjoiUW9EdnJ3TVJjMzlPS3ZSRnhZTjJSUT09IiwibWFjIjoiNjgzMzFmMzU0YmY5OWY1M2VkYTMwMDJjYzEyNTJkZjA3Njc2ZjBiYjFmOWRiMDJlMGIxNGI4MjJlMDJhMjBjOSIsInRhZyI6IiJ9"
+data-adsize="interstitial"></div>
+</div>
+<p class="info">Interstitial placement</p>
+</div>
+
+<div class="card">
+<h3>2. Banner Ad - 300x300</h3>
+<div class="ad">
+<div class="admoloBanner"
+data-publisher="eyJpdiI6IlJqT29jOUlQOTgyZU5FSnp2M083aGc9PSIsInZhbHVlIjoiQ2pqZlN2UnVseFREN1ZyYVRnaTUzQT09IiwibWFjIjoiMDhmNDQ4ZmNhOGRhYzFiNTQ1N2VlNDdiY2U3ZGJlOTg3OTg0ODFlZmI0YTgyYTM1YzZlMTk5ZDZkZGFkM2JkZSIsInRhZyI6IiJ9"
+data-adsize="300x300"></div>
+</div>
+</div>
+
+<div class="card">
+<h3>3. Banner Ad - 320x180</h3>
+<div class="ad">
+<div class="admoloBanner"
+data-publisher="eyJpdiI6IlFqR0hldE52WUlJSzdxNFdHMi9GSHc9PSIsInZhbHVlIjoiOUxwdEUrSjVpNU9Jclp4bXkvYkl4Zz09IiwibWFjIjoiMDYwNDc3NTU2ZTRkYmRjZmIzM2UyNDMwMTFiNGEyN2U1ZDkzYzM2YjM1ZjVmMzMxMmZlNjUwYzY1ZjJhMjEyMyIsInRhZyI6IiJ9"
+data-adsize="320x180"></div>
+</div>
+</div>
+
+<p class="info">Powered by Admolo SDK</p>
+</div>
+
+<script>
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+ tg.ready();
+ tg.expand();
+
+ document.getElementById("telegramStatus").textContent =
+ "Telegram Mini App Connected";
+
+ const user = tg.initDataUnsafe?.user;
+
+ if(user){
+  document.getElementById("userName").textContent =
+  "User: " + (user.first_name || "Telegram User");
+ }
+}else{
+ document.getElementById("telegramStatus").textContent =
+ "Browser Testing Mode";
+}
+</script>
+</body>
+</html>
